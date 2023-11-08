@@ -39,13 +39,32 @@ public class RegistrationFormPageObjectTest extends BaseTest {
                 .CheckForm("Address", "Challenger Ionia")
                 .CheckForm("State and City", "NCR Noida");
 
+    }
+    @Test
+    void minimalFieldsData() {
+        registrationPage.openPage()
+                .setFirstName("1")
+                .setLastName("2")
+                .setGenderInput("Male")
+                .setUserNumber("1234567891")
+                .setSubmit()
 
+                .CheckForm("Student Name", "1 2")
+                .CheckForm("Gender", "Male")
+                .CheckForm("Mobile", "1234567891");
+    }
+    @Test
+    void negativeTestData() {
+        registrationPage.openPage()
+                .setFirstName("")
+                .setLastName("2")
+                .setGenderInput("Male")
+                .setUserNumber("1234567891")
+                .setSubmit()
 
-
-
-
-
-
-
+                .CheckField("")
+                .CheckField("2")
+                .CheckField("Male")
+                .CheckField("1234567891");
     }
 }
