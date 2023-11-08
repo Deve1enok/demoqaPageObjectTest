@@ -1,13 +1,8 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class RegistrationFormPageObjectTest extends BaseTest {
@@ -18,7 +13,7 @@ public class RegistrationFormPageObjectTest extends BaseTest {
     void registrationForm() {
         registrationPage.openPage()
                 .setFirstName("Din")
-                .setLastName("Din")
+                .setLastName("Dinov")
                 .setUserEmail("DinDinov@gmail.com")
                 .setGenderInput("Male")
                 .setUserNumber("8777987654")
@@ -27,21 +22,22 @@ public class RegistrationFormPageObjectTest extends BaseTest {
                 .setSubject("Maths")
                 .setHobbies("Sports")
                 .setHobbies("Music")
-                .setPicture()
+                .choiсePicture()
                 .setAdress("Challenger Ionia")
                 .setState("NCR")
                 .setCity("Noida")
                 .setSubmit()
 
-                .setCheckForm("Din Dinov")
-                .setCheckForm("DinDinov@gmail.com")
-                .setCheckForm("Male")
-                .setCheckForm("8777987654")
-                .setCheckForm("04 July,1997")
-                .setCheckForm("Sports, Music")
-                .setCheckForm("leeSin.jpg")
-                .setCheckForm("Challenger Ionia")
-                .setCheckForm("NCR Noida");
+                .CheckForm("Student Name", "Din Dinov")
+                .CheckForm("Student Email","DinDinov@gmail.com")
+                .CheckForm("Gender", "Male")
+                .CheckForm("Mobile", "8777987654")
+                .CheckForm("Date of Birth", "04 July,1997")
+                .CheckForm("Subjects", "Physics, Maths")
+                .CheckForm("Hobbies", "Sports, Music")
+                .CheckForm("Picture", "CssNEO.jpg")
+                .CheckForm("Address", "Challenger Ionia")
+                .CheckForm("State and City", "NCR Noida");
 
 
 

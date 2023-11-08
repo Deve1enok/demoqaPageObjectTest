@@ -2,7 +2,6 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
-import pages.components.StateCityComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -27,8 +26,6 @@ public class RegistrationFormPage {
 
 
     CalendarComponent calendarComponent = new CalendarComponent();
-    StateCityComponent stateComponent = new StateCityComponent();
-    StateCityComponent cityComponent = new StateCityComponent();
 
 
     public RegistrationFormPage openPage() {
@@ -72,8 +69,8 @@ public class RegistrationFormPage {
         hobbiesInput.$(byText(value)).click();
         return this;
     }
-    public RegistrationFormPage setPicture () {
-        pictureLoad.uploadFromClasspath("leeSin.jpg");
+    public RegistrationFormPage choiсePicture () {
+        pictureLoad.uploadFromClasspath("img/CssNEO.jpg");
         return this;
     }
     public RegistrationFormPage setAdress (String value) {
@@ -81,21 +78,19 @@ public class RegistrationFormPage {
         return this;
     }
     public RegistrationFormPage setState (String value) {
-        stateInput.pressEnter();
-        stateComponent.setState(value);
+        stateInput.setValue(value).pressEnter();
         return this;
     }
     public RegistrationFormPage setCity (String value) {
-        cityInput.pressEnter();
-        cityComponent.setCity(value);
+        cityInput.setValue(value).pressEnter();
         return this;
     }
     public RegistrationFormPage setSubmit () {
         submitInput.click();
         return this;
     }
-    public RegistrationFormPage setCheckForm (String value) {
-        checkForm.shouldHave(text(value));
+    public RegistrationFormPage CheckForm (String key, String value) {
+        checkForm.$(byText(key)).parent().shouldHave(text(value));
         return this;
     }
 }
