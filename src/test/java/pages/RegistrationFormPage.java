@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationFormPage {
-    private static SelenideElement firstNameInput = $("#firstName"),
+    private final static SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderInput = $("#genterWrapper"),
@@ -17,7 +17,7 @@ public class RegistrationFormPage {
             subjectInput = $("#subjectsInput"),
             hobbiesInput = $("#hobbiesWrapper"),
             pictureLoad = $("#uploadPicture"),
-            adressField = $("#currentAddress"),
+            addressField = $("#currentAddress"),
             stateInput = $("#react-select-3-input"),
             cityInput = $("#react-select-4-input"),
             submitInput = $("#submit"),
@@ -77,13 +77,13 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage choiсePicture() {
+    public RegistrationFormPage choosePicture() {
         pictureLoad.uploadFromClasspath("img/CssNEO.jpg");
         return this;
     }
 
-    public RegistrationFormPage setAdress(String value) {
-        adressField.setValue(value);
+    public RegistrationFormPage setAddress(String value) {
+        addressField.setValue(value);
         return this;
     }
 

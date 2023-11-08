@@ -3,8 +3,6 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
 
-import static com.codeborne.selenide.Selenide.$;
-
 public class RegistrationFormPageObjectTest extends BaseTest {
     RegistrationFormPage registrationPage = new RegistrationFormPage();
 
@@ -22,8 +20,8 @@ public class RegistrationFormPageObjectTest extends BaseTest {
                 .setSubject("Maths")
                 .setHobbies("Sports")
                 .setHobbies("Music")
-                .choiсePicture()
-                .setAdress("Challenger Ionia")
+                .choosePicture()
+                .setAddress("Challenger Ionia")
                 .setState("NCR")
                 .setCity("Noida")
                 .setSubmit()
