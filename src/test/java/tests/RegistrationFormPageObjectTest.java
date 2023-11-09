@@ -10,6 +10,7 @@ public class RegistrationFormPageObjectTest extends BaseTest {
     @Test
     void registrationForm() {
         registrationPage.openPage()
+                .disableBanner()
                 .setFirstName("Din")
                 .setLastName("Dinov")
                 .setUserEmail("DinDinov@gmail.com")
@@ -26,16 +27,18 @@ public class RegistrationFormPageObjectTest extends BaseTest {
                 .setCity("Noida")
                 .setSubmit()
 
-                .CheckForm("Student Name", "Din Dinov")
-                .CheckForm("Student Email","DinDinov@gmail.com")
-                .CheckForm("Gender", "Male")
-                .CheckForm("Mobile", "8777987654")
-                .CheckForm("Date of Birth", "04 July,1997")
-                .CheckForm("Subjects", "Physics, Maths")
-                .CheckForm("Hobbies", "Sports, Music")
-                .CheckForm("Picture", "CssNEO.jpg")
-                .CheckForm("Address", "Challenger Ionia")
-                .CheckForm("State and City", "NCR Noida");
+
+
+                .checkForm("Student Name", "Din Dinov")
+                .checkForm("Student Email","DinDinov@gmail.com")
+                .checkForm("Gender", "Male")
+                .checkForm("Mobile", "8777987654")
+                .checkForm("Date of Birth", "04 July,1997")
+                .checkForm("Subjects", "Physics, Maths")
+                .checkForm("Hobbies", "Sports, Music")
+                .checkForm("Picture", "CssNEO.jpg")
+                .checkForm("Address", "Challenger Ionia")
+                .checkForm("State and City", "NCR Noida");
 
     }
     @Test
@@ -47,9 +50,9 @@ public class RegistrationFormPageObjectTest extends BaseTest {
                 .setUserNumber("1234567891")
                 .setSubmit()
 
-                .CheckForm("Student Name", "1 2")
-                .CheckForm("Gender", "Male")
-                .CheckForm("Mobile", "1234567891");
+                .checkForm("Student Name", "1 2")
+                .checkForm("Gender", "Male")
+                .checkForm("Mobile", "1234567891");
     }
     @Test
     void negativeTestData() {
@@ -60,9 +63,9 @@ public class RegistrationFormPageObjectTest extends BaseTest {
                 .setUserNumber("1234567891")
                 .setSubmit()
 
-                .CheckField("")
-                .CheckField("2")
-                .CheckField("Male")
-                .CheckField("1234567891");
+                .checkField("")
+                .checkField("2")
+                .checkField("Male")
+                .checkField("1234567891");
     }
 }

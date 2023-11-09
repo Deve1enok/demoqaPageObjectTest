@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.TableComponent;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -21,18 +22,21 @@ public class RegistrationFormPage {
             stateInput = $("#react-select-3-input"),
             cityInput = $("#react-select-4-input"),
             submitInput = $("#submit"),
-            checkForm = $(".table-responsive"),
             checkNameField = $("#firstName");
 
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    TableComponent tableComponent = new TableComponent();
 
 
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
+        return this;
+    }
+
+    public RegistrationFormPage disableBanner() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-
         return this;
     }
 
@@ -63,7 +67,7 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage setDateBirthday(String day, String month, String year) {
         calendarInput.click();
-        calendarComponent.setDate(day, month, year);
+        calendarComponent.setDate();
         return this;
     }
 
@@ -102,14 +106,13 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage CheckForm(String key, String value) {
-        checkForm.$(byText(key)).parent().shouldHave(text(value));
-        return this;
-    }
-
-    public RegistrationFormPage CheckField(String value) {
+    public RegistrationFormPage checkField(String value) {
         checkNameField.shouldBe(empty);
         checkNameField.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        return this;
+    }
+    public RegistrationFormPage checkForm (String key, String value) {
+        tableComponent.checkResult(key, value);
         return this;
     }
 }
