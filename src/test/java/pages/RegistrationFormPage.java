@@ -67,7 +67,7 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage setDateBirthday(String day, String month, String year) {
         calendarInput.click();
-        calendarComponent.setDate();
+        calendarComponent.setValue(day, month, year);
         return this;
     }
 
@@ -81,8 +81,8 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage choosePicture() {
-        pictureLoad.uploadFromClasspath("img/CssNEO.jpg");
+    public RegistrationFormPage choosePicture(String picture) {
+        pictureLoad.uploadFromClasspath(picture);
         return this;
     }
 
