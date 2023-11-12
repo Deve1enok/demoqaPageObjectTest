@@ -22,7 +22,8 @@ public class RegistrationFormPage {
             stateInput = $("#react-select-3-input"),
             cityInput = $("#react-select-4-input"),
             submitInput = $("#submit"),
-            checkNameField = $("#firstName");
+            tableResult = $(".table-responsive");
+
 
 
     CalendarComponent calendarComponent = new CalendarComponent();
@@ -106,13 +107,22 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage checkField(String value) {
-        checkNameField.shouldBe(empty);
-        checkNameField.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+    public RegistrationFormPage checkNameInputIsEmptyAndRedBordered() {
+        firstNameInput.shouldBe(empty);
+        firstNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
     public RegistrationFormPage checkForm (String key, String value) {
         tableComponent.checkResult(key, value);
+        return this;
+    }
+
+    public RegistrationFormPage setEmptyFirstName(String value) {
+        firstNameInput.setValue(value);
+        return this;
+    }
+    public RegistrationFormPage checkTableNotAppeared () {
+        tableResult.shouldNotBe(visible);
         return this;
     }
 }

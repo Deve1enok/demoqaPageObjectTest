@@ -57,15 +57,14 @@ public class RegistrationFormPageObjectTest extends BaseTest {
     @Test
     void negativeTestData() {
         registrationPage.openPage()
-                .setFirstName("")
-                .setLastName("2")
+                .setEmptyFirstName("")
+                .setLastName("Ramble")
                 .setGenderInput("Male")
                 .setUserNumber("1234567891")
                 .setSubmit()
 
-                .checkField("")
-                .checkField("2")
-                .checkField("Male")
-                .checkField("1234567891");
+                .checkNameInputIsEmptyAndRedBordered()
+                .checkTableNotAppeared();
+
     }
 }
