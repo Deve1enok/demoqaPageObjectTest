@@ -5,8 +5,6 @@ import pages.RegistrationFormPage;
 
 public class RegistrationFormPageObjectTest extends BaseTest {
     RegistrationFormPage registrationPage = new RegistrationFormPage();
-
-
     @Test
     void registrationForm() {
         registrationPage.openPage()
@@ -27,8 +25,6 @@ public class RegistrationFormPageObjectTest extends BaseTest {
                 .setCity("Noida")
                 .setSubmit()
 
-
-
                 .checkForm("Student Name", "Din Dinov")
                 .checkForm("Student Email","DinDinov@gmail.com")
                 .checkForm("Gender", "Male")
@@ -39,7 +35,6 @@ public class RegistrationFormPageObjectTest extends BaseTest {
                 .checkForm("Picture", "CssNEO.jpg")
                 .checkForm("Address", "Challenger Ionia")
                 .checkForm("State and City", "NCR Noida");
-
     }
     @Test
     void minimalFieldsData() {
@@ -57,14 +52,16 @@ public class RegistrationFormPageObjectTest extends BaseTest {
     @Test
     void negativeTestData() {
         registrationPage.openPage()
-                .setEmptyFirstName("")
+                .setLastName("")
                 .setLastName("Ramble")
                 .setGenderInput("Male")
                 .setUserNumber("1234567891")
                 .setSubmit()
 
                 .checkNameInputIsEmptyAndRedBordered()
+                .checkLastNameField("Ramble")
+                .checkGenderField("Male")
+                .checkNumberField("1234567891")
                 .checkTableNotAppeared();
-
     }
 }

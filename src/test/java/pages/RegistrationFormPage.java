@@ -25,7 +25,6 @@ public class RegistrationFormPage {
             tableResult = $(".table-responsive");
 
 
-
     CalendarComponent calendarComponent = new CalendarComponent();
     TableComponent tableComponent = new TableComponent();
 
@@ -112,17 +111,26 @@ public class RegistrationFormPage {
         firstNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
-    public RegistrationFormPage checkForm (String key, String value) {
+
+    public RegistrationFormPage checkForm(String key, String value) {
         tableComponent.checkResult(key, value);
         return this;
     }
 
-    public RegistrationFormPage setEmptyFirstName(String value) {
-        firstNameInput.setValue(value);
+    public RegistrationFormPage checkTableNotAppeared() {
+        tableResult.shouldNotBe(visible);
         return this;
     }
-    public RegistrationFormPage checkTableNotAppeared () {
-        tableResult.shouldNotBe(visible);
+    public RegistrationFormPage checkLastNameField(String value) {
+        lastNameInput.shouldHave(value(value));
+        return this;
+    }
+    public RegistrationFormPage checkGenderField(String value) {
+        genderInput.shouldHave(text(value));
+        return this;
+    }
+    public RegistrationFormPage checkNumberField(String value) {
+        userNumber.shouldHave(value(value));
         return this;
     }
 }
